@@ -1,0 +1,54 @@
+spring:
+  # 数据库
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/community?useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+      username: root
+      password: uuied0904
+      initial-size: 10
+      max-active: 60
+      min-idle: 5
+  main:
+    allow-bean-definition-overriding: true
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+  # Redis配置
+  redis:
+    host: 127.0.0.1
+    # 接口
+    port: 6379
+    lettuce:
+      pool:
+        # 连接池中的最大空闲连接数
+        max-idle: 8
+        # 连接池最大阻塞等待时间(ms)(负数表示无限制)
+        max-wait: -1
+        # 连接池中的最小空闲连接数
+        min-idle: 2
+    # 连接超时时间(ms)
+    timeout: 5000
+    password:
+
+# mybatis plus
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+server:
+  port: 7001
+
+jwt:
+  jwtKey: Community
+  jwtIssuer: Chavy
+security:
+  enable-session: false
+  expire: 7200000
